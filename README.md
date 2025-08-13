@@ -11,8 +11,7 @@ O projeto contempla **simulação** (testbench) e **síntese** (FPGA Mercúrio I
 - Implementar um subconjunto de instruções **RISC-V** definido pelo professor.
 - Simular e validar o funcionamento do processador via **testbench**.
 - Sintetizar o design para execução em FPGA **Mercúrio IV**.
-- Documentar a implementação e os resultados de forma clara e estruturada.
-
+- Documentar a implementação e os resultados.
 ---
 
 ## 🛠 Conjunto de Instruções Implementadas
@@ -21,6 +20,7 @@ De acordo com a tabela fornecida, o grupo implementou as seguintes instruções:
 
 LW, SW, SUB, XOR, ADDI, SRL, BEQ
 
+---
 
 O testbench foi configurado para:
 
