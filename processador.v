@@ -56,9 +56,9 @@ module processador (
 
     // --- INSTANCIAÇÃO DOS ESTÁGIOS ---
     
-    // Desvia quando a condição é atendida e limpa o pipeline
-    // For BEQ: branch when zero flag is 1 (A == B)
-    wire branch_condition_met = ex_ula_flags[0]; // zero flag
+    // BEQ: branch when registers are equal (zero flag = 1)
+    // The branch should be taken to SKIP the next instruction
+    wire branch_condition_met = ex_ula_flags[0]; // zero flag = 1 means A == B
     wire branch_taken = idex_Branch && branch_condition_met;
     assign pc_src = branch_taken;
     
@@ -109,11 +109,11 @@ module processador (
         .s_ULAOp(id_ULAOp)
     );
 
-    // Registrador de Pipeline ID/EX
+    // Registrador de Pipeline ID/EX  
     pipeline_idex idex_reg (
         .clk(clk),
         .rst(rst),
-        .ControlMux(ControlMux),
+        .ControlMux(ControlMux || branch_taken),
         .ifid_pc(ifid_pc),
         .ifid_pc_plus_4(ifid_pc_plus_4),
         .id_reg_data1(id_reg_data1),
