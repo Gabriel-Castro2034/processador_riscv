@@ -3,7 +3,7 @@ module testbench;
     reg rst;
     integer i;
     
-    processador_full_modular meu_cpu (
+    processador meu_cpu (
         .clk(clk),
         .rst(rst)
     );
