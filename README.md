@@ -1,4 +1,6 @@
 # Processador RISC-V – Trabalho Prático CSI509
+* Gabriel Henrique Fonseca Castro - 22.1.8024
+* Ian Miranda Vieira - 22.1.8002
 
 Implementação de um **processador RISC-V simplificado** com caminho de dados e unidade de controle em **Verilog**, desenvolvido como parte da disciplina **CSI509 – Organização e Arquitetura de Computadores II** (UFOP – João Monlevade).
 
