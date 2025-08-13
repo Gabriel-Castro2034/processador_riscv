@@ -57,7 +57,9 @@ module processador_full_modular (
     // --- INSTANCIAÇÃO DOS ESTÁGIOS ---
     
     // Desvia quando a condição é atendida e limpa o pipeline
-    wire branch_taken = idex_Branch && ex_ula_flags[0];
+    // For BEQ: branch when zero flag is 1 (A == B)
+    wire branch_condition_met = ex_ula_flags[0]; // zero flag
+    wire branch_taken = idex_Branch && branch_condition_met;
     assign pc_src = branch_taken;
     
     // Limpa os registradores de pipeline quando o desvio é tomado
@@ -78,7 +80,7 @@ module processador_full_modular (
     // Registrador de Pipeline IF/ID
     pipeline_ifid ifid_reg (
         .clk(clk),
-        .rst(rst || flush_pipeline),
+        .rst(rst),
         .IFIDWrite(IFIDWrite),
         .if_pc(if_pc_out),
         .if_pc_plus_4(if_pc_plus_4),
@@ -234,13 +236,10 @@ module processador_full_modular (
 
     // --- UNIDADE DE DETECÇÃO DE CONFLITOS ---
     hazard_detection hazard_unit (
-        .clk(clk),
-        .rst(rst),
         .IFID_rs1(ifid_instruction[19:15]),
         .IFID_rs2(ifid_instruction[24:20]),
         .IDEX_rd(idex_rd),
         .IDEX_MemRead(idex_MemRead),
-        .IFID_instruction(ifid_instruction),
         .PCWrite(PCWrite),
         .IFIDWrite(IFIDWrite),
         .ControlMux(ControlMux)
