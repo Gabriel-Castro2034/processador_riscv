@@ -14,7 +14,7 @@ module testbench;
     
     initial begin
 			  //Memória de instruções
-			  $readmemh("C:/Users/gabri/Documents/proc/programa.hex", mem);
+			  $readmemh("C:/Users/gabri/Documents/proc/programa.hex", meu_cpu.if_stage.imem_inst.mem);
 			  //Estado inicial registradores
 			  $readmemh("registradores.hex", meu_cpu.id_stage.breg_inst.mem);
 			  //Estado inicial memória
@@ -49,6 +49,6 @@ module testbench;
 				end
 
 			  $finish;
-end
+    end
 
 endmodule
