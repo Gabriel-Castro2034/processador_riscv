@@ -27,7 +27,7 @@ module testbench;
 			  rst = 1;         
 			  #20;
 			  rst = 0;
-
+			  
 			  #200; 
 			  
 			  // --- VERIFICAÇÃO DOS RESULTADOS FINAIS ---
@@ -47,6 +47,7 @@ module testbench;
 					meu_cpu.mem_stage.dmem_inst.mem[i+3], meu_cpu.mem_stage.dmem_inst.mem[i+2],
 					meu_cpu.mem_stage.dmem_inst.mem[i+1], meu_cpu.mem_stage.dmem_inst.mem[i+0]);
 				end
+				
 
 			  $finish;
     end
